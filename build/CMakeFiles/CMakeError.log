@@ -1,0 +1,56 @@
+Performing C++ SOURCE FILE Test NCNN_COMPILER_SUPPORT_X86_AVX_VNNI failed with the following output:
+Change Dir: /hy-tmp/ncnn/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0d4f7/fast && /usr/bin/make -f CMakeFiles/cmTC_0d4f7.dir/build.make CMakeFiles/cmTC_0d4f7.dir/build
+make[1]: Entering directory '/hy-tmp/ncnn/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0d4f7.dir/src.cxx.o
+/usr/bin/c++    -DNCNN_COMPILER_SUPPORT_X86_AVX_VNNI -mfma -mf16c -mavx2 -mavxvnni   -o CMakeFiles/cmTC_0d4f7.dir/src.cxx.o -c /hy-tmp/ncnn/build/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option ‘-mavxvnni’; did you mean ‘-mavx512vnni’?
+make[1]: *** [CMakeFiles/cmTC_0d4f7.dir/build.make:66: CMakeFiles/cmTC_0d4f7.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/hy-tmp/ncnn/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_0d4f7/fast] Error 2
+
+
+Source file was:
+#include <immintrin.h>
+int main() { __m256i _s, _a, _b; _s = _mm256_dpwssd_epi32(_s, _a, _b); return 0; }
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /hy-tmp/ncnn/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_49d7b/fast && /usr/bin/make -f CMakeFiles/cmTC_49d7b.dir/build.make CMakeFiles/cmTC_49d7b.dir/build
+make[1]: Entering directory '/hy-tmp/ncnn/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_49d7b.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_49d7b.dir/src.c.o   -c /hy-tmp/ncnn/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_49d7b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49d7b.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_49d7b.dir/src.c.o  -o cmTC_49d7b 
+/usr/bin/ld: CMakeFiles/cmTC_49d7b.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_49d7b.dir/build.make:87: cmTC_49d7b] Error 1
+make[1]: Leaving directory '/hy-tmp/ncnn/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_49d7b/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+

@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/hy-tmp/ncnn/glslang/OGLCompilersDLL/InitializeDll.h
+../glslang/OSDependent/osinclude.h
+/hy-tmp/ncnn/glslang/glslang/OSDependent/osinclude.h
+
+/hy-tmp/ncnn/glslang/glslang/OSDependent/Unix/ossource.cpp
+../osinclude.h
+/hy-tmp/ncnn/glslang/glslang/OSDependent/osinclude.h
+../../../OGLCompilersDLL/InitializeDll.h
+/hy-tmp/ncnn/glslang/OGLCompilersDLL/InitializeDll.h
+pthread.h
+-
+semaphore.h
+-
+assert.h
+-
+errno.h
+-
+stdint.h
+-
+cstdio
+-
+sys/time.h
+-
+sys/resource.h
+-
+
+/hy-tmp/ncnn/glslang/glslang/OSDependent/osinclude.h
+

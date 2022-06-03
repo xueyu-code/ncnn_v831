@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/hy-tmp/ncnn/tools/mxnet/mxnet2ncnn.cpp
+limits.h
+-
+map
+-
+set
+-
+stdint.h
+-
+stdio.h
+-
+string.h
+-
+string
+-
+vector
+-
+
